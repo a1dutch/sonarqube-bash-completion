@@ -1,0 +1,13 @@
+_sonar() {
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+	commands="console start stop restart status dump"
+	
+    if [ $COMP_CWORD == 1 ]
+    then
+      COMPREPLY=($(compgen -W "${commands}" -- ${cur}))
+      return 0
+    fi
+}
+
+complete -F _sonar sonar
